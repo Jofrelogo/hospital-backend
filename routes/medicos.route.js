@@ -1,43 +1,44 @@
 /*
-    Usuarios
-    Ruta = /api/usuarios
+    Medicos
+    Ruta: '/api/medicos'
 */
 
 const {Router} = require('express');
 const {check} = require('express-validator');
 const {validarCampos} = require('../middlewares/validar-campos')
-const {getUsuarios, crearUsuarios, updateUsuarios, deleteUsuarios} = require("../controllers/usuarios.controller");
 const {validarJWT} = require("../middlewares/validar-jwt");
+const {getMedicos, crearMedicos, updateMedicos, deleteMedicos} = require('../controllers/medicos.controller')
 
 
 const route = Router();
 
-route.get('/', validarJWT, getUsuarios);
+route.get('/', validarJWT, getMedicos);
 
 route.post('/',
     [
+        validarJWT,
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
         check('apellido', 'El apellido es obligatorio').not().isEmpty(),
-        check('password', 'El password es obligatorio').not().isEmpty(),
-        check('email', 'El email es obligatorio').isEmail(),
+        check('hospital', 'El hospital es obligatorio').not().isEmpty(),
+        check('hospital', 'El hospital id debe de ser valido').isMongoId(),
         validarCampos
     ],
-    crearUsuarios);
+    crearMedicos);
 
 route.put('/:id',
     [
         validarJWT,
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
         check('apellido', 'El apellido es obligatorio').not().isEmpty(),
-        check('email', 'El email es obligatorio').isEmail(),
-        check('role', 'El rol es obligatorio').not().isEmpty(),
+        check('hospital', 'El hospital es obligatorio').not().isEmpty(),
+        check('hospital', 'El hospital id debe de ser valido').isMongoId(),
         validarCampos
     ],
-    updateUsuarios);
+    updateMedicos);
 
 route.delete('/:id',
     validarJWT,
-    deleteUsuarios
+    deleteMedicos
 );
 
 

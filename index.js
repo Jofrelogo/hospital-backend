@@ -22,7 +22,11 @@ dbConnection();
 
 // Rutas
 app.use('/api/usuarios', require('./routes/usuarios.route'));
+app.use('/api/hospitales', require('./routes/hospitales.route'));
+app.use('/api/medicos', require('./routes/medicos.route'));
 app.use('/api/login', require('./routes/auth.route'));
+app.use('/api/todo', require('./routes/busquedas.router'));
+app.use('/api/upload', require('./routes/uploads.router'));
 
 
 
