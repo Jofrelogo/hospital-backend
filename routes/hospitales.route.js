@@ -23,12 +23,14 @@ route.post('/',
 
 route.put('/:id',
     [
+        validarJWT,
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
         validarCampos
     ],
     updateHospitales);
 
 route.delete('/:id',
+    validarJWT,
     deleteHospitales
 );
 

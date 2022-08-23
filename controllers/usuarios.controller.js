@@ -101,13 +101,13 @@ const updateUsuarios = async (req, res = response) => {
             ok: true,
             msg: 'actualizar usuarios',
             usuario: usuarioActua
-        })
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({
             ok: false,
             msg: 'Error inesperado...'
-        })
+        });
     }
 }
 
@@ -136,7 +136,7 @@ const deleteUsuarios = async (req, res = response) => {
         res.status(500).json({
             ok: false,
             msg: 'Error inesperado...'
-        })
+        });
     }
 }
 
