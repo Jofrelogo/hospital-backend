@@ -85,7 +85,6 @@ const getFile = (req, res= response) => {
         const pathNoImg = path.join( __dirname, `../uploads/no-img.jpg`);
         res.sendFile(pathNoImg);
     }
-
 }
 
 module.exports = {

@@ -9,7 +9,10 @@ const { dbConnection } = require('./database/config');
 const app = express();
 
 // Configurar CORS
-app.use(cors())
+app.use(cors());
+
+// Carpeta pública
+app.use( express.static('public'))
 
 // Lectura y parseo del body
 app.use(express.json());
